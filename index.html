@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="theme-color" content="#F5F3EF">
+  
+  <title>ANGMER | Alta Precisão em Transtorno Obsessivo-Compulsivo</title>
+  <meta name="description" content="Tratamento médico de alta precisão e confidencialidade absoluta para o TOC. Atendimento privativo voltado a lideranças e figuras públicas em São Paulo.">
+  <meta name="keywords" content="tratamento TOC de luxo, psiquiatra TOC de alta precisão, psiquiatra particular TOC, quiet luxury psiquiatria">
+  <meta name="author" content="ANGMER">
+  <meta name="robots" content="index, follow">
+
+  <link rel="alternate" hreflang="pt-BR" href="https://angmer.com.br" />
+  <link rel="alternate" hreflang="en" href="https://angmer.com.br/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://angmer.com.br" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Physician",
+      "name": "Dr. Elquer Rodrigues",
+      "medicalSpecialty": "Psychiatry",
+      "url": "https://angmer.com.br",
+      "description": "Tratamento médico especializado em Transtorno Obsessivo-Compulsivo (TOC) para o público corporativo e institucional.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      },
+      "priceRange": "$$$$"
+    }
+  </script>
+  
+  <style>
+    /* PALETA SARTORIAL CANVAS - WCAG 2.1 AA COMPLIANT */
+    :root {
+      --bg: #F5F3EF;               
+      --text: #000000;             
+      --text-muted: #0A0A0A;       
+      --text-light: #4A453E;       
+      --accent: #736351;           
+      --line: rgba(0, 0, 0, 0.15); 
+      --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+      
+      --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    * { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text-muted);   
+      line-height: 2.1; 
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* SELETOR DE IDIOMAS MINIMALISTA */
+    .lang-nav {
+      position: absolute;
+      top: 40px;
+      right: 24px;
+      display: flex;
+      gap: 15px;
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      letter-spacing: 1px;
+      z-index: 10;
+    }
+    .lang-nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .lang-nav a:hover, .lang-nav a.active {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* CAPA EDITORIAL CLARA */
+    header {
+      text-align: center; 
+      padding: 0 24px;
+      display: block;
+      margin-top: 18vh;
+      margin-bottom: 18vh;
+    }
+    
+    h1 { 
+      font-family: var(--font-sans);
+      font-size: 0.85rem; 
+      color: var(--text-light); 
+      margin-bottom: 60px; 
+      text-transform: uppercase;
+      letter-spacing: 8px;
+      font-weight: 500; 
+    }
+    
+    .hero-statement { 
+      font-family: var(--font-serif); 
+      font-size: clamp(2.2rem, 6vw, 3.8rem); 
+      font-weight: 300;
+      color: var(--text); 
+      margin: 0 auto 30px auto; 
+      line-height: 1.1;
+      max-width: 700px;
+    }
+    
+    .hero-locations { 
+      font-family: var(--font-sans); 
+      font-size: 0.65rem; 
+      font-weight: 500; 
+      letter-spacing: 4px; 
+      color: var(--text-muted); 
+      text-transform: uppercase; 
+      margin-bottom: 12px;
+    }
+    
+    .hero-city { 
+      font-family: var(--font-sans); 
+      font-size: 0.6rem; 
+      font-weight: 500; 
+      letter-spacing: 2px; 
+      color: var(--text-light); 
+      text-transform: uppercase; 
+    }
+
+    /* BOTÃO SUTIL */
+    .btn { 
+      display: inline-block; 
+      margin-top: 50px; 
+      font-family: var(--font-sans); 
+      color: var(--text-muted); 
+      background-color: transparent; 
+      border: none;
+      border-bottom: 1px solid var(--line);
+      padding: 0 0 8px 0; 
+      text-decoration: none; 
+      font-size: 0.7rem; 
+      text-transform: uppercase; 
+      letter-spacing: 4px; 
+      transition: border-color 0.4s ease, color 0.4s ease; 
+      font-weight: 500; 
+    }
+    .btn:hover { 
+      border-bottom-color: var(--text); 
+      color: var(--text);
+    }
+    .btn:focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 4px;
+    }
+
+    /* IMAGENS DE TRANSIÇÃO COM FILTRO AESOP */
+    .parallax-divider {
+      width: 100%;
+      height: 60vh;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain; 
+      background-attachment: scroll; 
+      position: relative;
+      background-color: transparent;
+      filter: contrast(104%) brightness(94%) sepia(10%) saturate(80%);
+      opacity: 0; 
+      transform: scale(0.98); 
+      transform-origin: center center;
+      transition: opacity 2.2s cubic-bezier(0.16, 1, 0.3, 1), transform 2.5s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
+    }
+
+    @media (min-width: 769px) {
+      .parallax-divider { height: 75vh; margin: 40px 0; }
+    }
+
+    .parallax-divider.visible { opacity: 1; transform: scale(1); }
+
+    /* SEÇÕES DE CONTEÚDO EDITORIAIS */
+    .content-section { 
+      padding: 120px 24px; 
+      max-width: 800px; 
+      margin: 0 auto; 
+      opacity: 0; 
+      transform: translateY(30px); 
+      transition: all 1.4s var(--transition-smooth); 
+      will-change: transform, opacity; 
+    }
+    .content-section.visible { opacity: 1; transform: translateY(0); }
+
+    .content { max-width: 580px; margin: 0 auto; text-align: center; }
+    .content p { 
+      font-size: clamp(0.95rem, 1.6vw, 1.05rem); 
+      color: var(--text-muted); 
+      margin-bottom: 35px; 
+      line-height: 2.1; 
+      font-weight: 300; 
+      letter-spacing: 0.3px; 
+    }
+    .content p:last-child { margin-bottom: 0; }
+
+    /* Efeito de Revelação Lenta Editorial */
+    .scroll-reveal-slow {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      color: var(--text-light);
+      margin: 20px 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 2.5s cubic-bezier(0.16, 1, 0.3, 1), transform 2.5s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
+    }
+    .scroll-reveal-slow.visible {
+      opacity: 1; 
+      transform: translateY(0);
+    }
+
+    /* FOTO DE PERFIL */
+    .profile-photo {
+      display: block;
+      margin: 0 auto 60px auto;
+      height: 45vh;              
+      width: auto;
+      object-fit: contain;
+      border: none;              
+      padding: 0;
+      background: transparent;
+      filter: contrast(102%) sepia(12%) brightness(96%) saturate(85%);
+    }
+
+    .secure-alt-contact {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      color: var(--text-light);
+      letter-spacing: 0.3px;
+      margin-top: 40px;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+
+    /* ACCORDION */
+    .faq-container { margin-top: 80px; text-align: left; border-top: 1px solid var(--line); }
+    .faq-item { border-bottom: 1px solid var(--line); }
+    .faq-item summary {
+      padding: 24px 0;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 500; 
+      color: var(--text-muted);
+      cursor: pointer;
+      list-style: none;
+      position: relative;
+      letter-spacing: 0.5px;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; } 
+    .faq-item summary::after {
+      content: '+';
+      position: absolute;
+      right: 0;
+      color: var(--text-light);
+      font-weight: 500;
+      font-size: 1.2rem;
+    }
+    .faq-item[open] summary { color: var(--text); font-weight: 600; }
+    .faq-item[open] summary::after { content: '–'; color: var(--text); }
+    .faq-answer {
+      padding-bottom: 24px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      line-height: 1.9;
+      font-weight: 300;
+    }
+
+    /* FOOTER */
+    footer { text-align: center; padding: 60px 24px 100px 24px; font-family: var(--font-sans); margin: 0 auto; }
+    .footer-brand { font-family: var(--font-serif); font-size: 1.4rem; letter-spacing: 6px; color: var(--text); margin-bottom: 15px; }
+    .footer-creds { font-size: 0.65rem; letter-spacing: 3px; color: var(--text-light); margin-bottom: 20px; }
+    .footer-email { display: inline-block; font-size: 0.7rem; letter-spacing: 2px; color: var(--text-muted); text-decoration: none; transition: color 0.3s ease; font-weight: 500; }
+    .footer-email:hover { color: var(--accent); }
+
+    /* MOBILE */
+    @media(max-width: 768px) {
+      .lang-nav { top: 25px; right: 20px; gap: 10px; }
+      header { padding: 0 20px; margin-top: 16vh; margin-bottom: 12vh; } 
+      h1 { letter-spacing: 6px; margin-bottom: 40px; }
+      .hero-statement { font-size: 2.1rem; line-height: 1.25; margin-bottom: 25px; }
+      .content-section { padding: 90px 20px; }
+      .profile-photo { height: 40vh; margin: 0 auto 40px auto; }
+      .parallax-divider { height: 50vh; margin: 20px 0; background-size: contain; }
+      .btn { display: inline-block; width: auto; text-align: center; padding: 0 0 8px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="lang-nav">
+    <a href="/" class="active">PT</a>
+    <a href="/en/">EN</a>
+  </nav>
+
+  <header>
+    <h1>ANGMER</h1>
+    <p class="hero-statement">A mente em seu perfeito ajuste.</p>
+    <p class="hero-locations">Alta calibração &bull; Rigor Científico &bull; Discrição Definitiva</p>
+    <p class="hero-city">São Paulo</p>
+  </header>
+
+  <div class="parallax-divider" style="background-image: url('foto1.jpg');"></div>
+
+  <section class="content-section" style="padding-top: 140px;">
+    <div class="content">
+      <p style="font-family: var(--font-serif); font-size: clamp(1.8rem, 4.5vw, 2.5rem); color: #000000 !important; font-weight: 600; line-height: 1.4; margin-bottom: 80px;">
+        Tratamento sob medida para o TOC.
+      </p>
+
+      <p style="font-family: var(--font-serif); font-size: clamp(1.15rem, 3.2vw, 1.45rem); color: var(--text); font-weight: 400; margin-bottom: 50px; line-height: 1.6;">
+        Acreditamos que mentes de alto rigor merecem uma intervenção cirúrgica e milimétrica. O TOC não é um caos a ser silenciado à força, mas uma estrutura complexa que exige reajuste, fluidez e alívio de suas tensões invisíveis.
+      </p>
+      
+      <p class="scroll-reveal-slow">Arquitetura Clínica Singular</p>
+      <p class="scroll-reveal-slow" style="transition-delay: 0.3s;">O Direito de Não Ser Visto</p>
+    </div>
+  </section>
+
+  <div class="parallax-divider" style="background-image: url('foto2.jpg');"></div>
+
+  <section class="content-section">
+    <div class="content">
+      <p style="font-family: var(--font-serif); font-size: clamp(1.5rem, 3.5vw, 2rem); color: #000000; font-weight: 500; margin-bottom: 40px; text-align: left;">
+        O Direito de Não Ser Visto
+      </p>
+      <p style="text-align: left; margin-bottom: 30px;">
+        Em um cenário onde a exposição é a regra, o anonimato absoluto eleva-se ao mais alto grau de exclusividade. Para líderes, figuras públicas e mentes que sustentam o peso de grandes responsabilidades, o Transtorno Obsessivo-Compulsivo é uma batalha exaustiva travada na sombra. Compreendemos a complexa arquitetura necessária para manter uma imagem pública impecável enquanto, nos bastidores, tenta-se silenciar o rigor implacável de uma mente obsessiva.
+      </p>
+      <p style="text-align: left; margin-bottom: 30px;">
+        Nossa prática não oferece apenas excelência clínica internacional; ela é fundamentada em um protocolo de confidencialidade inquebrável. O direito de não ser visto não é uma mera conveniência, mas a pedra angular de nossa instituição. Desenhamos uma estrutura de atendimento onde a sua privacidade é blindada com a mesma precisão cirúrgica com que calibramos a sua saúde mental.
+      </p>
+      <p style="text-align: left;">
+        Aqui, o ajuste fino da sua mente ocorre em um território de profunda reserva. Oferecemos um refúgio intelectual e estruturado para desfazer a tensão dos rituais invisíveis, sem deixar rastros, sem riscos de exposição e sem comprometer o seu legado. Porque o luxo definitivo não é apenas o acesso à mais alta especialização médica; é ter a absoluta certeza de que ninguém, jamais, saberá que você esteve aqui.
+      </p>
+    </div>
+  </section>
+
+  <div class="parallax-divider" style="background-image: url('foto3.jpg');"></div>
+
+  <section class="content-section">
+    <div class="content">
+      <img src="perfilrqe.jpeg" alt="Dr. Elquer Rodrigues" class="profile-photo">
+      
+      <p>Desenvolvido pelo Dr. Elquer Rodrigues, médico psiquiatra (CRM-SP 157303 • RQE 85941).</p>
+      <p>Com dedicação exclusiva à psiquiatria de alta complexidade há mais de doze anos, cada etapa do diagnóstico e do planejamento terapêutico do TOC é conduzida pessoalmente pelo médico, garantindo um acompanhamento milimétrico e individualizado.</p>
+    </div>
+  </section>
+
+  <section class="content-section" style="border-top: 1px solid var(--line); padding-top: 80px;">
+    <div class="content">
+      <p>Consulte a disponibilidade de agenda para a abertura de protocolo clínico.</p>
+      
+      <a href="https://wa.me/5511977335683?text=Solicito%20verificar%20a%20disponibilidade%20de%20atendimento%20da%20ANGMER." 
+         target="_blank" 
+         class="btn"
+         aria-label="Verificar disponibilidade de atendimento via WhatsApp">
+        Solicitar Consulta Estrutural
+      </a>
+      
+      <span class="secure-alt-contact">
+        Admissão estritamente restrita.<br>Atendimento realizado mediante disponibilidade geográfica.
+      </span>
+
+      <div class="faq-container">
+        <h3 style="font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; color: var(--text-light); margin-bottom: 20px; text-align: center;">Estrutura do Serviço</h3>
+        
+        <details class="faq-item">
+          <summary>Critérios de Admissão</summary>
+          <div class="faq-answer">
+            <p style="margin: 0; text-align: left;">Voltado exclusivamente a pacientes com diagnóstico ou suspeita de Transtorno Obsessivo-Compulsivo (TOC) cujas rotinas e cargos de alta governança exijam eliminação de deslocamentos, proteção absoluta de imagem e flexibilidade de agendamento em São Paulo.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>A Metodologia de Intervenção</summary>
+          <div class="faq-answer">
+            <p style="margin: 0; text-align: left; white-space: pre-line;">O protocolo é estabelecido no local de preferência do paciente — residência, escritório ou hotel de alta linha — com o mesmo rigor científico e profundidade de um ambiente de pesquisa médica. 
+            O processo envolve mapeamento neurocomportamental detalhado, delineamento de estratégias personalizadas de exposição e prevenção de resposta (EPR) e ajustes farmacológicos minuciosos quando necessários. Por se tratar de um serviço ultra-especializado e com reserva exclusiva de tempo médico, os atendimentos seguem um modelo privado de contratação.</p>
+          </div>
+        </details>
+        
+        <details class="faq-item">
+          <summary>Território de Abrangência</summary>
+          <div class="faq-answer">
+            <p style="margin: 0; text-align: left;">Núcleos corporativos, hotéis de luxo e residências privadas na capital de São Paulo, mantendo a logística sob absoluto sigilo.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>A Essência Institucional: ANGMER</summary>
+          <div class="faq-answer">
+            <p style="margin: 0; text-align: left; white-space: pre-line;">A marca ANGMER baseia-se nos princípios de liderança discreta, firmeza silenciosa e eficácia cirúrgica. 
+            Nossa atuação se distancia de discursos públicos ou excessos visuais; entregamos consistência científica, calmaria e calibração de alta precisão para mentes que governam.</p>
+          </div>
+        </details>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand">ANGMER</div>
+    <div class="footer-creds">CRM-SP 157303 • RQE 85941</div>
+    <a href="mailto:drelquer@quietpsychiatry.com" class="footer-email">drelquer@quietpsychiatry.com</a>
+  </footer>
+
+  <script>
+    const details = document.querySelectorAll('details');
+    details.forEach((targetDetail) => {
+      targetDetail.addEventListener('click', () => {
+        details.forEach((detail) => {
+          if (detail !== targetDetail) {
+            detail.removeAttribute('open');
+          }
+        });
+      });
+    });
+
+    (function() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+      
+      document.querySelectorAll('.content-section, .parallax-divider, .scroll-reveal-slow').forEach(function(s) { observer.observe(s); });
+    })();
+  </script>
+</body>
+</html>
