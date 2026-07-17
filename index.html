@@ -1,97 +1,155 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <meta name="theme-color" content="#F5F3EF">
-  
-  <title>TOC | Transtorno Obsessivo Compulsivo</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    /* PALETA SARTORIAL CANVAS */
-    :root {
-      --bg: #F5F3EF;               
-      --text: #000000;             
-      --text-muted: #0A0A0A;       
-      --text-light: #4A453E;       
-      --accent: #736351;           
-      --line: rgba(0, 0, 0, 0.15); 
-      
-      --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-      --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-    
-    * { 
-      box-sizing: border-box; 
-    }
-    
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: var(--font-sans);
-      background: var(--bg);
-      color: var(--text-muted);   
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A | Psiquiatria Concierge</title>
+    <style>
+        /* Importação de fontes premium do Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
 
-    .container {
-      text-align: center;
-      padding: 24px;
-      margin-top: 15vh;
-      width: 100%;
-      max-width: 1200px;
-    }
+        :root {
+            --bg-color: #050505; /* Preto profundo, não um preto padrão */
+            --text-color: #f4f4f4; /* Branco suave para não cansar a vista */
+            --accent-color: #c5a059; /* Dourado sutil para detalhes de luxo */
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
 
-    h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(5rem, 15vw, 12rem);
-      font-weight: 300;
-      color: var(--text);
-      letter-spacing: -2px;
-      margin: 0;
-      line-height: 0.9;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .subtitle {
-      font-family: var(--font-sans);
-      font-size: clamp(0.75rem, 2vw, 1.1rem);
-      font-weight: 400;
-      color: var(--text-light);
-      text-transform: uppercase;
-      letter-spacing: 6px;
-      margin-top: 30px;
-      margin-bottom: 0;
-    }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-body);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased; /* Suaviza as fontes nas telas da Apple */
+        }
 
-    .tagline {
-      font-family: var(--font-sans);
-      font-size: clamp(0.75rem, 2vw, 1.1rem);
-      font-weight: 400;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 6px;
-      margin-top: 15px;
-      margin-bottom: 0;
-    }
-  </style>
+        /* Logotipo Minimalista */
+        .logo {
+            font-family: var(--font-body);
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 10px;
+            text-align: center;
+            padding: 50px 0;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 30px;
+            text-align: center;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 50px;
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+        }
+
+        p.lead {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #aaaaaa;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* Linha de separação elegante */
+        .divider {
+            width: 1px;
+            height: 100px;
+            background-color: var(--accent-color);
+            margin: 30px auto;
+            opacity: 0.5;
+        }
+
+        section {
+            padding: 60px 0 120px 0;
+        }
+
+        .content-block p {
+            font-size: 1.25rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            color: #dcdcdc;
+            letter-spacing: 0.5px;
+        }
+
+        /* Botão de contato estilo High-End */
+        .cta-button {
+            display: inline-block;
+            padding: 18px 45px;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            transition: all 0.5s ease;
+            margin-top: 40px;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        footer {
+            padding: 50px 0;
+            font-size: 0.75rem;
+            color: #444;
+            text-align: center;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-top: 1px solid #111;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>TOC</h1>
-    <p class="subtitle">Transtorno Obsessivo Compulsivo</p>
-    <p class="tagline">Tratamento Intensivo</p>
-  </div>
+    <!-- Logotipo -->
+    <div class="logo">A</div>
+
+    <header>
+        <div class="container">
+            <h1>Excelência & Discrição</h1>
+            <div class="divider"></div>
+        </div>
+    </header>
+
+    <section class="content-block">
+        <div class="container">
+            <!-- Seu texto mantido na íntegra -->
+            <p>Nosso formato de avaliação psiquiátrica foi desenhado para oferecer a máxima privacidade e conforto.</p>
+            <p>Por isso, não atuamos com um consultório fixo tradicional; o atendimento é realizado de forma concierge (in loco), onde eu vou até a sua residência ou local de preferência na capital de São Paulo.</p>
+            
+            <a href="#" class="cta-button">Solicitar Agendamento</a>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 Psiquiatria Concierge. Exclusividade e Privacidade.
+    </footer>
 
 </body>
 </html>
