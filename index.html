@@ -1,155 +1,1068 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A | Psiquiatria Concierge</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#F4F1EA" />
+    <title>PSIQUIATRA TOC | Especialista em Transtorno Obsessivo-Compulsivo</title>
+    <meta name="description" content="Tratamento especializado em TOC por videoconferência. Atendimento online para todo o Brasil com privacidade e sem deslocamentos." />
+    <meta name="keywords" content="psiquiatra toc, tratamento toc online, telemedicina psiquiatria, especialista em toc, psiquiatra videoconferência" />
+    <meta name="author" content="PSIQUIATRA TOC" />
+    <meta name="robots" content="index, follow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Physician",
+            "name": "Dr. [Seu Nome]",
+            "medicalSpecialty": "Psychiatry",
+            "url": "https://seusite.com.br/",
+            "description": "Tratamento especializado em Transtorno Obsessivo-Compulsivo (TOC) por videoconferência para todo o Brasil.",
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "BR"
+            },
+            "priceRange": "$$$$",
+            "telehealth": "True"
+        }
+    </script>
     <style>
-        /* Importação de fontes premium do Google Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
-
         :root {
-            --bg-color: #050505; /* Preto profundo, não um preto padrão */
-            --text-color: #f4f4f4; /* Branco suave para não cansar a vista */
-            --accent-color: #c5a059; /* Dourado sutil para detalhes de luxo */
-            --font-heading: 'Playfair Display', serif;
-            --font-body: 'Montserrat', sans-serif;
+            --bg: #F4F1EA;
+            --bg-alt: #F4F1EA;
+            --text: #2C2B2A;
+            --text-muted: #5A5A5A;
+            --text-light: #8A8A8A;
+            --accent: #9B856A;
+            --line: rgba(44, 43, 42, 0.12);
+            --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+            --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+            --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: var(--font-body);
-            line-height: 1.8;
-            -webkit-font-smoothing: antialiased; /* Suaviza as fontes nas telas da Apple */
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-sans);
+            background: var(--bg);
+            color: var(--text-muted);
+            line-height: 2.1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
         }
 
-        /* Logotipo Minimalista */
-        .logo {
-            font-family: var(--font-body);
-            font-size: 2.5rem;
-            font-weight: 300;
-            letter-spacing: 10px;
-            text-align: center;
-            padding: 50px 0;
-            color: #ffffff;
-            text-transform: uppercase;
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.03;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 30px;
-            text-align: center;
+        .scroll-signature {
+            position: fixed;
+            top: 0;
+            right: 24px;
+            width: 1px;
+            height: 0%;
+            background-color: var(--line);
+            z-index: 9999;
+            pointer-events: none;
+            transition: height 0.1s linear;
+        }
+
+        .site-wrapper {
+            background: var(--bg);
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            transform-origin: center top;
+            animation: expandSite 2.4s cubic-bezier(0.8, 0, 0.2, 1) forwards, unlockScroll 0s 2.4s forwards;
+            transition: opacity 0.4s ease;
+        }
+
+        @keyframes expandSite {
+            0% {
+                clip-path: inset(50% 50%);
+                transform: scale(1.04);
+                background: var(--bg);
+            }
+            15% {
+                clip-path: inset(calc(50% - 90px));
+                transform: scale(1.02);
+                background: var(--bg);
+            }
+            45% {
+                clip-path: inset(calc(50% - 90px));
+                transform: scale(1.02);
+                background: var(--bg);
+            }
+            100% {
+                clip-path: inset(0%);
+                transform: scale(1);
+                background: var(--bg);
+            }
+        }
+
+        @keyframes unlockScroll {
+            to {
+                height: auto;
+                overflow: visible;
+                clip-path: none;
+            }
+        }
+
+        .lang-nav {
+            position: fixed;
+            top: 40px;
+            right: 24px;
+            display: flex;
+            gap: 15px;
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+            z-index: 10;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.6s var(--transition-smooth);
+        }
+
+        .lang-nav.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lang-nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .lang-nav a:hover,
+        .lang-nav a.active {
+            color: var(--text);
+            font-weight: 600;
         }
 
         header {
+            text-align: center;
+            padding: 40px 24px 80px 24px;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #F4F1EA 0%, #EAE5D9 30%, #F0EDE4 60%, #F4F1EA 100%);
+            z-index: 0;
+            filter: blur(0px);
+            transform: scale(1.05);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(244, 241, 234, 0.5);
+            z-index: 1;
+        }
+
+        .title-box {
+            display: inline-block;
+            background-color: transparent;
+            padding: 0;
+            font-family: var(--font-serif);
+            font-size: clamp(1.92rem, 4.2vw, 3.36rem);
+            color: var(--text);
+            text-transform: uppercase;
+            font-weight: 700 !important;
+            letter-spacing: 6px;
+            line-height: 1.3;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: elegantFadeUp 2.2s cubic-bezier(0.16, 1, 0.3, 1) 1.6s forwards;
+            position: relative;
+            z-index: 2;
+        }
+
+        .title-divider {
+            width: 60px;
+            height: 1px;
+            background-color: var(--text);
+            margin: 24px auto 30px auto;
+            opacity: 0;
+            animation: elegantFadeUp 1.8s cubic-bezier(0.16, 1, 0.3, 1) 2.0s forwards;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text-block {
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes elegantFadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-statement {
+            font-family: var(--font-serif);
+            font-size: clamp(1.0rem, 2.4vw, 1.6rem);
+            font-weight: bold;
+            color: var(--text);
+            margin: 0 auto 20px auto;
+            line-height: 1.5;
+            max-width: 800px;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: elegantFadeUp 2.5s cubic-bezier(0.16, 1, 0.3, 1) 2.4s forwards;
+        }
+
+        .hero-locations {
+            font-family: var(--font-sans);
+            font-size: 0.6rem;
+            font-weight: bold;
+            letter-spacing: 5px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 0;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: elegantFadeUp 2.5s cubic-bezier(0.16, 1, 0.3, 1) 2.7s forwards;
+        }
+
+        .onde-section {
+            padding-top: 40px;
+            padding-bottom: 200px;
+            margin: 0 0 40px 0;
+            background-color: var(--bg-alt);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding-bottom: 50px;
         }
 
-        h1 {
-            font-family: var(--font-heading);
-            font-size: 3rem;
-            font-weight: 400;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            color: var(--accent-color);
+        .chic-box-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 80px;
         }
 
-        p.lead {
-            font-size: 1.1rem;
-            font-weight: 300;
-            color: #aaaaaa;
-            max-width: 600px;
-            margin: 0 auto 40px auto;
-        }
-
-        /* Linha de separação elegante */
-        .divider {
-            width: 1px;
-            height: 100px;
-            background-color: var(--accent-color);
-            margin: 30px auto;
-            opacity: 0.5;
-        }
-
-        section {
-            padding: 60px 0 120px 0;
-        }
-
-        .content-block p {
-            font-size: 1.25rem;
-            font-weight: 300;
-            margin-bottom: 30px;
-            color: #dcdcdc;
-            letter-spacing: 0.5px;
-        }
-
-        /* Botão de contato estilo High-End */
-        .cta-button {
+        .chic-box {
             display: inline-block;
-            padding: 18px 45px;
-            border: 1px solid var(--accent-color);
-            color: var(--accent-color);
-            text-decoration: none;
+            border: 1px solid var(--text);
+            padding: 40px 60px;
+            font-family: var(--font-serif);
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            color: var(--text);
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.85rem;
-            transition: all 0.5s ease;
-            margin-top: 40px;
+            letter-spacing: 0.25em;
+            line-height: 1.6;
+            text-align: center;
+            background-color: transparent;
+            font-weight: 700 !important;
         }
 
-        .cta-button:hover {
-            background-color: var(--accent-color);
-            color: var(--bg-color);
+        .header-gallery {
+            width: 100vw;
+            margin-left: calc(50% - 50vw);
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 12vw;
+            margin-top: 100px;
+            margin-bottom: 60px;
+            padding: 0 5vw;
+        }
+
+        .gallery-item {
+            position: relative;
+            width: 26vw;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.5s var(--transition-smooth), transform 1.5s var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .gallery-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-image {
+            display: block;
+            width: 100%;
+            height: 75vh;
+            object-fit: cover;
+            filter: contrast(102%) brightness(96%) sepia(3%) saturate(85%) grayscale(20%);
+            transition: filter 1.2s var(--transition-smooth);
+            background-color: #EAE5D9;
+        }
+
+        .gallery-item:hover .gallery-image {
+            filter: contrast(102%) brightness(96%) sepia(3%) saturate(105%) grayscale(0%);
+        }
+
+        .gallery-caption {
+            width: 100%;
+            text-align: center;
+            padding: 0 10px 120px 10px;
+        }
+
+        .caption-title {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin: 0 0 6px 0;
+        }
+
+        .caption-desc {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            word-break: normal;
+            overflow-wrap: normal;
+        }
+
+        .btn {
+            display: inline-block;
+            font-family: var(--font-sans);
+            background-color: #000;
+            color: #fff;
+            padding: 14px 28px;
+            text-decoration: none;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            border: 1px solid #000;
+            border-radius: 2px;
+        }
+
+        .btn:hover {
+            background-color: #fff;
+            color: #000;
+            border-color: #000;
+            opacity: 1;
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.5s var(--transition-smooth), transform 1.5s var(--transition-smooth);
+            will-change: transform, opacity;
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .sp-banner-wrapper {
+            width: 100%;
+            text-align: center;
+            margin: 150px 0;
+        }
+
+        .sp-banner-inner {
+            position: relative;
+            display: block;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .sp-image {
+            display: block;
+            width: 100%;
+            height: 78vh;
+            object-fit: cover;
+            filter: contrast(102%) brightness(96%) sepia(3%) saturate(90%);
+            background-color: #EAE5D9;
+        }
+
+        .sp-caption {
+            font-family: var(--font-serif);
+            font-weight: 300;
+            color: var(--text);
+            text-align: center;
+            margin-top: 50px;
+            font-size: 32px;
+        }
+
+        .content-section {
+            padding: 120px clamp(24px, 10vw, 120px);
+            max-width: 50vw;
+            margin: 0 auto;
+        }
+
+        .profile-section {
+            margin-top: 80px;
+            padding-top: 60px;
+        }
+
+        .content {
+            max-width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .content p {
+            font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+            color: var(--text-muted);
+            margin-bottom: 60px;
+            line-height: 2.2;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+
+        .content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .scroll-reveal-slow {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--text-light);
+            margin: 40px 0;
+            font-weight: 700;
+            opacity: 0;
+            transform: translateY(20px) scale(0.98);
+            transition: opacity 2.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 2.5s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+
+        .scroll-reveal-slow.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .profile-photo {
+            display: block;
+            margin: 0 auto 150px auto;
+            height: 58vh;
+            width: auto;
+            object-fit: contain;
+            border: none;
+            padding: 0;
+            background: #EAE5D9;
+            filter: contrast(102%) brightness(96%) sepia(3%) saturate(90%);
+        }
+
+        .btn-container {
+            padding-top: 100px;
+            padding-bottom: 100px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .secure-alt-contact {
+            display: block;
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            color: var(--text) !important;
+            font-weight: bold !important;
+            letter-spacing: 0.5px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .faq-container {
+            margin-bottom: 140px;
+            text-align: left;
+        }
+
+        .faq-container h3 {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .faq-item summary {
+            padding: 30px 0;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text);
+            list-style: none;
+            position: relative;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            position: absolute;
+            right: 0;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
+
+        .faq-item[open] summary {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .faq-item[open] summary::after {
+            content: '–';
+            color: var(--text);
+        }
+
+        .faq-answer {
+            padding-bottom: 30px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .faq-answer p {
+            margin: 0 0 15px 0;
+            text-align: left;
+        }
+
+        .faq-answer p:last-child {
+            margin: 0;
         }
 
         footer {
-            padding: 50px 0;
-            font-size: 0.75rem;
-            color: #444;
             text-align: center;
+            padding: 80px 24px 100px 24px;
+            font-family: var(--font-sans);
+            margin: 0 auto;
+            background-color: transparent;
+            color: var(--text-muted);
+            border-top: 1px solid var(--line);
+        }
+
+        .footer-brand {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            letter-spacing: 6px;
+            color: var(--text);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .footer-luxury-tag {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
             letter-spacing: 3px;
+            color: var(--text-light);
+            margin-bottom: 30px;
             text-transform: uppercase;
-            border-top: 1px solid #111;
+        }
+
+        .footer-creds {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: var(--text-light);
+            margin-bottom: 35px;
+        }
+
+        .footer-email {
+            display: inline-block;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .footer-email:hover {
+            color: var(--accent);
+        }
+
+        body,
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        a,
+        span,
+        div,
+        section,
+        footer,
+        header,
+        nav,
+        .btn,
+        .hero-statement,
+        .hero-locations,
+        .content p,
+        .faq-answer,
+        .secure-alt-contact,
+        .sp-caption,
+        .scroll-reveal-slow,
+        .footer-brand,
+        .footer-luxury-tag,
+        .footer-creds,
+        .footer-email,
+        .lang-nav a,
+        .content-section,
+        .sp-banner-wrapper,
+        .site-wrapper,
+        .gallery-item,
+        .hero-text-block {
+            font-weight: 700 !important;
+        }
+
+        .title-box {
+            font-weight: 700 !important;
+            font-size: clamp(1.92rem, 4.2vw, 3.36rem) !important;
+        }
+
+        .footer-brand {
+            font-weight: 400 !important;
+        }
+
+        .chic-box {
+            font-weight: 700 !important;
+        }
+
+        .faq-item summary,
+        .faq-item summary::after {
+            font-weight: 400 !important;
+        }
+
+        @media(min-width: 769px) {
+            .header-gallery {
+                flex-direction: column;
+                align-items: center;
+                gap: 100px;
+                padding: 0 20px;
+                margin-top: 100px;
+                margin-bottom: 60px;
+            }
+
+            .gallery-item {
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .gallery-image {
+                height: 75vh;
+                aspect-ratio: auto;
+                object-fit: cover;
+            }
+
+            .gallery-caption {
+                padding: 0 10px 120px 10px;
+            }
+        }
+
+        @media(max-width: 768px) {
+            .scroll-signature {
+                right: 10px;
+            }
+
+            .lang-nav {
+                top: 25px;
+                right: 20px;
+                gap: 10px;
+            }
+
+            header {
+                padding: 30px 20px 60px 20px;
+                min-height: 100vh;
+            }
+
+            .hero-statement {
+                font-size: clamp(0.7rem, 3.5vw, 1.0rem);
+                letter-spacing: 4px;
+                white-space: normal;
+            }
+
+            .onde-section {
+                padding-top: 26px;
+                padding-bottom: 140px;
+                margin: 0 0 30px 0;
+            }
+
+            .chic-box-wrapper {
+                padding: 0 20px;
+                margin-bottom: 50px;
+            }
+
+            .chic-box {
+                padding: 30px 20px;
+                font-size: clamp(1rem, 4.5vw, 1.3rem);
+                letter-spacing: 0.15em;
+            }
+
+            .header-gallery {
+                flex-direction: column;
+                gap: 16vh;
+                margin-bottom: 30px;
+                margin-top: 60px;
+                padding: 0;
+            }
+
+            .gallery-item {
+                width: 100vw;
+                padding: 0 20px;
+            }
+
+            .gallery-image {
+                height: 70vh;
+                aspect-ratio: auto;
+                object-fit: cover;
+            }
+
+            .gallery-caption {
+                padding: 0 10px 80px 10px;
+            }
+
+            .caption-title {
+                font-size: 1.2rem;
+            }
+
+            .caption-desc {
+                font-size: 0.8rem;
+            }
+
+            .content-section {
+                max-width: 100%;
+                padding: 80px 20px;
+            }
+
+            .profile-section {
+                margin-top: 40px;
+                padding-top: 40px;
+            }
+
+            .profile-photo {
+                height: 50vh;
+                width: 100%;
+                margin: 0 auto 120px auto;
+            }
+
+            .sp-banner-wrapper {
+                margin: 100px 0;
+                width: 100vw;
+                position: relative;
+                left: 50%;
+                right: 50%;
+                margin-left: -50vw;
+                margin-right: -50vw;
+            }
+
+            .sp-banner-inner {
+                width: 100%;
+                display: block;
+            }
+
+            .sp-image {
+                width: 100vw;
+                height: 66vh;
+                object-fit: cover;
+            }
+
+            .sp-caption {
+                font-size: 24px;
+                margin-top: 40px;
+            }
+
+            .btn {
+                display: inline-block;
+                width: auto;
+                text-align: center;
+            }
+
+            .btn-container {
+                padding-top: 60px;
+                padding-bottom: 60px;
+                margin-top: 40px;
+            }
+
+            .faq-container {
+                margin-bottom: 80px;
+            }
+
+            footer {
+                padding: 60px 20px 80px 20px;
+            }
+
+            .title-divider {
+                width: 40px;
+                margin: 18px auto 22px auto;
+            }
+
+            .title-box {
+                padding: 0;
+                font-size: clamp(1.44rem, 4.8vw, 2.16rem) !important;
+                letter-spacing: 3px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Logotipo -->
-    <div class="logo">A</div>
+    <div class="noise-overlay"></div>
 
-    <header>
-        <div class="container">
-            <h1>Excelência & Discrição</h1>
-            <div class="divider"></div>
+    <div class="site-wrapper">
+
+        <div class="scroll-signature"></div>
+
+        <nav class="lang-nav" id="langNav">
+            <a href="/" class="active">PT</a>
+        </nav>
+
+        <header>
+            <div class="hero-background"></div>
+            <div class="hero-overlay"></div>
+
+            <div class="title-box">PSIQUIATRA<br>TOC</div>
+            <div class="title-divider"></div>
+            <div class="hero-text-block">
+                <p class="hero-statement">Tratamento especializado em TOC por videoconferência.</p>
+                <p class="hero-locations">Online &bull; Brasil todo &bull; Privacidade</p>
+            </div>
+        </header>
+
+        <section class="onde-section scroll-reveal">
+            <div class="content" style="max-width: 800px; margin: 0 auto;">
+
+                <div class="chic-box-wrapper">
+                    <div class="chic-box">
+                        Atendimento por videoconferência,<br>onde você estiver
+                    </div>
+                </div>
+
+                <p class="scroll-reveal-slow" style="font-size: clamp(0.8rem, 1.2vw, 1.0rem); font-family: var(--font-sans); font-weight: 300; letter-spacing: 0.3em; color: var(--text-light); margin-bottom: 48px; text-transform: uppercase;">
+                    Sem deslocamentos
+                </p>
+                <p class="scroll-reveal-slow" style="font-size: clamp(0.8rem, 1.2vw, 1.0rem); font-family: var(--font-sans); font-weight: 300; letter-spacing: 0.3em; color: var(--text-light); margin-bottom: 48px; text-transform: uppercase;">
+                    Sem exposição pública
+                </p>
+                <p class="scroll-reveal-slow" style="font-size: clamp(0.8rem, 1.2vw, 1.0rem); font-family: var(--font-sans); font-weight: 300; letter-spacing: 0.3em; color: var(--text-light); margin-bottom: 0; text-transform: uppercase;">
+                    Sigilo absoluto
+                </p>
+            </div>
+        </section>
+
+        <div class="header-gallery">
+            <div class="gallery-item scroll-reveal">
+                <div class="gallery-caption">
+                    <p class="caption-title">No seu espaço seguro</p>
+                    <p class="caption-desc">Para quem busca tratamento sem sair de casa. O TOC pode dificultar deslocamentos e gerar angústia em ambientes desconhecidos. A telemedicina leva o especialista até você, no conforto do seu lar.</p>
+                </div>
+                <!-- Substitua o src abaixo pela sua imagem -->
+                <img src="https://placehold.co/600x800/F4F1EA/9B856A?text=Sua+Imagem" alt="Atendimento online no conforto de casa" class="gallery-image">
+            </div>
+
+            <div class="gallery-item scroll-reveal">
+                <div class="gallery-caption">
+                    <p class="caption-title">Privacidade digital</p>
+                    <p class="caption-desc">Consulta por videoconferência com plataforma segura e criptografada. Ninguém precisa saber que você está em tratamento. Sua privacidade é preservada em cada detalhe.</p>
+                </div>
+                <!-- Substitua o src abaixo pela sua imagem -->
+                <img src="https://placehold.co/600x800/F4F1EA/9B856A?text=Sua+Imagem" alt="Privacidade na consulta online" class="gallery-image">
+            </div>
+
+            <div class="gallery-item scroll-reveal">
+                <div class="gallery-caption">
+                    <p class="caption-title">Flexibilidade total</p>
+                    <p class="caption-desc">Agende no horário que funciona para você, de qualquer cidade do Brasil. O tratamento do TOC exige regularidade — a telemedicina facilita a continuidade do cuidado, onde quer que você esteja.</p>
+                </div>
+                <!-- Substitua o src abaixo pela sua imagem -->
+                <img src="https://placehold.co/600x800/F4F1EA/9B856A?text=Sua+Imagem" alt="Atendimento flexível por telemedicina" class="gallery-image">
+            </div>
         </div>
-    </header>
 
-    <section class="content-block">
-        <div class="container">
-            <!-- Seu texto mantido na íntegra -->
-            <p>Nosso formato de avaliação psiquiátrica foi desenhado para oferecer a máxima privacidade e conforto.</p>
-            <p>Por isso, não atuamos com um consultório fixo tradicional; o atendimento é realizado de forma concierge (in loco), onde eu vou até a sua residência ou local de preferência na capital de São Paulo.</p>
-            
-            <a href="#" class="cta-button">Solicitar Agendamento</a>
+        <section class="content-section profile-section scroll-reveal" style="background-color: transparent; color: var(--text-muted);">
+            <div class="content">
+                <!-- Substitua o src abaixo pela sua foto de perfil -->
+                <img src="https://placehold.co/400x600/F4F1EA/9B856A?text=Sua+Foto" alt="Dr. [Seu Nome]" class="profile-photo scroll-reveal">
+                <p>Eu sou o Dr. [Seu Nome], médico psiquiatra especialista em Transtorno Obsessivo-Compulsivo <span style="white-space: nowrap;">CRM [UF] [Número] • RQE [Número]</span></p>
+                <p>Atuo exclusivamente no tratamento do TOC há mais de [X] anos. Todo o atendimento é realizado pessoalmente por mim, por videoconferência, com o mesmo rigor técnico e profundidade de uma consulta presencial.</p>
+            </div>
+        </section>
+
+        <div class="sp-banner-wrapper scroll-reveal">
+            <div class="sp-banner-inner">
+                <!-- Substitua o src abaixo pela sua imagem de banner -->
+                <img src="https://placehold.co/1200x800/F4F1EA/9B856A?text=Sua+Imagem" class="sp-image" alt="Atendimento em todo o Brasil">
+                <p class="sp-caption">Atendimento em todo o Brasil.</p>
+            </div>
         </div>
-    </section>
 
-    <footer>
-        &copy; 2026 Psiquiatria Concierge. Exclusividade e Privacidade.
-    </footer>
+        <section class="content-section scroll-reveal" style="background-color: transparent; color: var(--text-muted);">
+            <div class="content">
 
+                <div class="faq-container">
+                    <h3>Informações</h3>
+                    <details class="faq-item">
+                        <summary>Para quem é este serviço?</summary>
+                        <div class="faq-answer">
+                            <p>Destinado a pessoas com diagnóstico ou suspeita de Transtorno Obsessivo-Compulsivo (TOC) que buscam tratamento especializado por videoconferência, com flexibilidade de horários e total privacidade, em qualquer estado do Brasil.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Como funciona o atendimento por telemedicina?</summary>
+                        <div class="faq-answer">
+                            <p>Após a confirmação do agendamento e pagamento, você recebe um link seguro para a videoconferência.</p>
+                            <p>A consulta ocorre com a mesma profundidade e rigor técnico de uma consulta presencial: avaliação clínica completa, diagnóstico, orientação terapêutica e prescrição quando necessária.</p>
+                            <p>Por se tratar de um serviço médico particular e altamente personalizado, com tempo reservado exclusivamente para o paciente, todas as consultas são previamente agendadas e pagas. Não há consultas de retorno gratuitas.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>O atendimento é realmente para todo o Brasil?</summary>
+                        <div class="faq-answer">
+                            <p>Sim. Atendo pacientes de qualquer estado por meio da telemedicina, respeitando todas as normas do Conselho Federal de Medicina. A receita digital tem validade nacional.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Como é feito o agendamento?</summary>
+                        <div class="faq-answer">
+                            <p>A solicitação inicial é feita via WhatsApp. Após uma breve análise de disponibilidade clínica, o horário da consulta é confirmado diretamente com o médico.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="btn-container">
+                    <a href="https://wa.me/5511999999999?text=Gostaria%20de%20verificar%20a%20disponibilidade%20para%20consulta%20online%20-%20TOC."
+                       target="_blank"
+                       class="btn"
+                       aria-label="Agende sua consulta online para tratamento de TOC">
+                        Agendar consulta online
+                    </a>
+                    <span class="secure-alt-contact">
+                        Agenda limitada.<br>Atendimento por telemedicina para todo o Brasil.
+                    </span>
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-brand">PSIQUIATRA TOC</div>
+            <div class="footer-luxury-tag">PSYCHIATRIST · TELEMEDICINE</div>
+            <div class="footer-creds"><span style="white-space: nowrap;">CRM [UF] [Número] • RQE [Número]</span></div>
+            <a href="mailto:seuemail@exemplo.com" class="footer-email">seuemail@exemplo.com</a>
+        </footer>
+    </div>
+
+    <script>
+        const details = document.querySelectorAll('details');
+        details.forEach((targetDetail) => {
+            targetDetail.addEventListener('click', () => {
+                details.forEach((detail) => {
+                    if (detail !== targetDetail) {
+                        detail.removeAttribute('open');
+                    }
+                });
+            });
+        });
+
+        (function() {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.scroll-reveal, .content-section, .sp-banner-wrapper, .scroll-reveal-slow, .onde-section')
+                .forEach(function(el) {
+                    if (!el.classList.contains('scroll-reveal-slow')) {
+                        el.classList.add('scroll-reveal');
+                    }
+                    observer.observe(el);
+                });
+        })();
+
+        (function() {
+            const langNav = document.getElementById('langNav');
+            let alreadyVisible = false;
+
+            window.addEventListener('scroll', function() {
+                if (!alreadyVisible && window.scrollY > window.innerHeight * 0.1) {
+                    langNav.classList.add('visible');
+                    alreadyVisible = true;
+                }
+            });
+        })();
+
+        const scrollSignature = document.querySelector('.scroll-signature');
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const maxScroll = document.body.scrollHeight - window.innerHeight;
+            if (maxScroll > 0) {
+                const progress = Math.min((scrolled / maxScroll) * 100, 100);
+                scrollSignature.style.height = progress + '%';
+            }
+        });
+    </script>
 </body>
 </html>
